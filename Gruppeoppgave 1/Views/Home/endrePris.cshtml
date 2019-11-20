@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "endrePris";
+}
+
+<!-- JAVASCRIPT KODING ligger i /Scripts/JavaScript_endrePriser.js ---->
+<script src="@Url.Content("~/Scripts/JavaScript_endrePriser.js")"></script>
+
+
+<body>
+
+    <div class="section-endre">
+        <h2 class="pt-4 mb-4 w-75 text-center">Admin - håndtere priser</h2>
+
+        <p class="m-0 w-75 text-center mb-4">
+            Ønsker du å endre prisene på billettene? </br>
+            Ved endring av bestilling, kan man fikse direkte på tabellen og bekrefte ved å trykke på <strong> 'Endre' </strong>.
+        </p>
+
+        <!-------------------ALERT BOKS PRIS-------------------------->
+        <div class="w-25 mb-5 alertPris">
+            <p class="alert alert-danger text-center alertPrisText">FEIL MELDING HER </p>
+        </div>
+
+        <div id="visPriser"></div>
+
+        <div class="endreBilde">
+            <img src="~/Image/endrePrisVy.png" />
+        </div>
+
+    </div>
+
+    <!----------------------- FOOTER TILBAKE TIL ADMIN ------------------------>
+    <div class="w-100 section-tilbake pt-5 pb-5">
+        <div class="d-flex justify-content-center ">
+            @Html.ActionLink("Gå tilbake", "AdminSide", new { tom = "" }, new { @class = "btn btn-dark pr-4 pl-4 btnTilbake" })
+        </div>
+
+    </div>
+
+
+
+    <!----------------- BEKREFTELSES MODAL --------------------------->
+    <div class="modal fade" id="bekrefteModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Bekreftelse</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-hiddem="Close"></button>
+                    <span aria-hidden="true">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <p class="modalHere"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Angre</button>
+                    <!--- <button type="button" class="btn btn-dark" href="/Home/AdminSide" id="bekreftSlett">Bekreft</button> -->
+                    <a class="btn btn-dark text-white" id="btnBekreftModal">Bekreft</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+<!---- Style Sheet Design:  /Content/Stylesheet_endre.css  ---->
+<link href="~/Content/Stylesheet_endre.css" rel="stylesheet" type="text/css" />

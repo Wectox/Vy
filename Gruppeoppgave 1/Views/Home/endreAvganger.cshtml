@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "endreAvganger";
+}
+
+
+<!-- JAVASCRIPT KODING ligger i /Scripts/JavaScripts_endreAvganger.js ---->
+<script src="@Url.Content("~/Scripts/JavaScript_endreAvganger.js")"></script>
+
+
+<body>
+
+    <!----------------------- SECTION ENDRE AVGANGER------------------------------>
+    <div class="section-endre">
+
+        <div class="endreBilde">
+            <img src="~/Image/endreAvgangVy.png" />
+        </div>
+
+        <h2 class="pt-4 mb-4 avgangh2">Admin - håndtere avganger</h2>
+
+        <p class="textAvg text-center mb-4">Velg destinasjonene <strong>fra</strong> og <strong>til </strong> for å liste opp avgangene:</p>
+
+
+        <!-------------------ALERT VELG DESTINASJON------------------------->
+        <div class="w-25 mx-auto mt-4 mb-5 alertVelgAvgang">
+            <p class="alert alert-danger text-center alertVelgAvgangText">FEIL MELDING HER </p>
+        </div>
+
+        <div class="d-flex flex-row justify-content-center velgAvg pb-5 mb-4 velgDest">
+            <div class="item row">
+                <p class="mr-3"> <strong>Fra: </strong></p>
+
+                <div id="dropFra">
+                    <select id="dropdownFra" class="form-control" onchange="validerVelgDest()"> </select>
+                </div>
+            </div>
+
+
+            <div class="item row ml-5">
+                <p class="ml-5 mr-3"> <strong>Til: </strong></p>
+
+                <div id="dropTil">
+                    <select id="dropdownTil" class="form-control pl-2 destinasjon" onchange="validerVelgDest()">
+                        <option disabled selected>Avgang til</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="listAvganger w-100">
+            <h3 class="text-center">Liste av avgange her: </h3>
+
+            <!-------------------ALERT VELG DESTINASJON------------------------->
+            <div class="w-25 mx-auto mt-5 mb-2 alertListAvgang">
+                <p class="alert alert-danger text-center alertListAvgangText">FEIL MELDING HER </p>
+            </div>
+
+            <div id="avganger">
+                <p class="text-center mt-4" id="tomAvgang">Vennligst velg destinasjonene for å liste avgangene!</p>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!----------------------- FOOTER TILBAKE TIL ADMIN ------------------------>
+
+    <div class="w-100 section-tilbake pt-5 pb-5">
+        <div class="d-flex justify-content-center ">
+            @Html.ActionLink("Gå tilbake", "AdminSide", new { tom = "" }, new { @class = "btn btn-dark pr-4 pl-4 btnTilbake" })
+        </div>
+
+    </div>
+
+    <!----------------- BEKREFTELSES MODAL --------------------------->
+    <div class="modal fade" id="bekrefteModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Bekreftelse</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-hiddem="Close"></button>
+                    <span aria-hidden="true">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <p class="modalHere"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Angre</button>
+                    <!--- <button type="button" class="btn btn-dark" href="/Home/AdminSide" id="bekreftSlett">Bekreft</button> -->
+                    <a class="btn btn-dark text-white" id="btnBekreftModal">Bekreft</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+<!---- Style Sheet Design:  /Content/Stylesheet_endre.css  ---->
+<link href="~/Content/Stylesheet_endre.css" rel="stylesheet" type="text/css" />

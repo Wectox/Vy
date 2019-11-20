@@ -1,0 +1,169 @@
+﻿*{
+    box-sizing: border-box;
+}
+
+h1 {
+    /* background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7));*/
+    width: 30%;
+    margin: 0 auto;
+    border-radius: 7px;
+}
+
+
+h3::after {
+    border-bottom: 1px solid #dedede;
+    width: 100px;
+    display: block;
+    margin: 0 auto;
+    padding-top: 15px;
+    content: "";
+    margin-bottom: 50px;
+}
+
+/*-----------  ALERT BOKS  ------------------*/
+
+.alertBestilling{
+    display: none;
+}
+
+.alertAdmin {
+    display: none;
+}
+
+
+/*---------  Section-Endre ----------------------*/
+.sectionEndre {
+    background-color: #f7f7f7;
+    background-image: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)),url(/Image/adminVy.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    margin-bottom: 70px;
+}
+
+.endreBoks{
+    background: #ffffff;
+    border-radius: 5px;
+    border: 1px solid #d1d1d1;
+    box-shadow: 1px 2px 7px;
+    transition: transform 1s;
+}
+
+.endreBoks:hover {
+    transform: scale(1.1);
+}
+
+
+.endreBoks img {
+    width: 230px;
+    height: auto;
+}
+
+.textBoks {
+    background: #ededed;
+    font-family: Bahnschrift;
+}
+
+
+
+/*-------------  Section-listBestillinger ----------------------*/
+
+
+.section-listBestillinger {
+    height: auto;
+    padding-bottom: 120px;
+}
+
+
+.section-listBestillinger p{
+    font-size: 19px;
+}
+
+
+
+.tabellList {
+    border: 1px solid #e3e3e3;
+    /*box-shadow: 1px 0px 4px; */
+} 
+
+.inputText {
+    border: 1px solid #e3e3e3;
+    border-radius: 2px;
+    width: 100%;
+}
+
+.readOnly {
+    border: 0;
+    text-align: center;
+}
+
+
+/*--------------  Section-Logo ----------------------*/
+
+.section-logo{
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),url(/Image/admin2Vy.jpg);
+    height: 500px;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.section-logo img{
+    margin-top: 60px;
+    margin-left: 30px;
+    width: 500px;
+    height: auto;
+}
+
+.logoBoks{
+    float:left;
+}
+
+
+.slagOrd{
+    padding-top: 80px;
+    margin-left: 50px;
+    font-family: serif;
+    font-size: 55px;
+    width: 50%;
+}
+
+.slagOrd::after {
+    content:"-Vy";
+    display: block;
+    margin-top: 50px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-style:italic;
+    font-size: 30px;
+}
+
+
+
+/*--------------  Section-listAdmin ----------------------*/
+
+.section-listAdmin p{
+    font-size: 19px;
+}
+
+
+
+
+/*--------------  Logg ut ----------------------*/
+
+.section-loggUt {
+    background: #f0f0f0;
+}
+
+.loggUtText {
+    font-size:20px;
+}
+
+.btnLoggUt{
+    font-size: 20px;
+}
+
+
+
+
+
+
+
+

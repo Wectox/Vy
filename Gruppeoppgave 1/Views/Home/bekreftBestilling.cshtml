@@ -1,0 +1,42 @@
+﻿@model List<Gruppeoppgave_1.Model.Bestilling>
+
+@{
+    ViewBag.Title = "bekreftBestilling";
+}
+
+<body>
+    <!----------------------- SECTION BEKREFTELSE------------------------------>
+    <h1 class="w-50 mt-4 mx-auto text-center">Bestillingen er godkjent!</h1>
+
+    <p class="w-50 mx-auto mt-4 mb-5 text-center">
+        Tusen takk for din bestilling hos oss! Billetten din er nå lagt til behandling. <br />
+        <strong>Vy</strong> håper at du får en god opplevelse og trygg transport hos oss.
+    </p>
+
+    <h5 class="w-50 mt-2 mx-auto text-center">Velkommen tilbake!  </h5>
+
+    <div class="btnDiv mx-auto">
+        <a href="/Home/Index" class="btn btn-dark mt-4 mb-5">Tilbake til bestilling</a>
+    </div>
+    <div class="imgBekreftet w-100"></div>
+</body>
+
+
+
+<!---- Style Sheet Design  ---->
+<style>
+    p {
+        font-size: 20px;
+    }
+
+    .btnDiv {
+        width: 162px;
+    }
+
+    .imgBekreftet {
+        background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(../../Image/bekreftetVy.jpg);
+        background-size: cover;
+        height: 49.6vh;
+        padding-top: -100px;
+    }
+</style>

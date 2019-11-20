@@ -1,0 +1,64 @@
+﻿@model Gruppeoppgave_1.Model.Admin
+
+@{
+    ViewBag.Title = "loggInn";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal w-100 section-loggInn">
+        <h1 class="w-50 ml-5 mb-3">Logg inn som Admin</h1>
+
+        <div class="form-group mt-4">
+            @if (ViewBag.Innlogget == false)
+            {<div class="col-md-4">
+                    <p class="alert alert-danger text-center">Eposten eller passordet ditt er feil. Prøv igjen! </p>
+                </div>
+            }
+        </div>
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group ml-5 mt-4">
+            @Html.LabelFor(model => model.Epost, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Epost, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Epost, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group ml-5 mb-3">
+            @Html.LabelFor(model => model.Passord, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Passord, new { htmlAttributes = new { @class = "form-control", @type="password" } })
+                @Html.ValidationMessageFor(model => model.Passord, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="text-dark ml-5 mb-4 registrer"> Har du ikke bruker? @Html.ActionLink("Registrer her", "registrerAdmin", new { tom = "" }, new { @class = "" })</div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Logg inn" class="btn btn-dark btnloggInn" />
+            </div>
+        </div>
+
+        <div class="tilbakeHoved">
+            @Html.ActionLink("Tilbake til hovedsiden", "Index", new { tom = "" }, new { @class = "btn btn-secondary btnTilbake" })
+        </div>
+    </div>
+
+}
+
+
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<!---- Style Sheet Design:  /Content/Stylesheet_loggInn.css  ---->
+<link href="~/Content/Stylesheet_loggInn.css" rel="stylesheet" type="text/css" />
+

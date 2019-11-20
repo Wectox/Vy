@@ -1,0 +1,150 @@
+﻿
+@{
+    ViewBag.Title = "AdminSide";
+}
+
+
+<!-- JAVASCRIPT KODING ligger i /Scripts/JavaScript_admin.js ---->
+<script src="@Url.Content("~/Scripts/JavaScript_admin.js")"></script>
+
+<body>
+
+    <!----------------------- SECTION ENDRE AVGANG, DESTINASJON OG PRIS ------------------------------>
+    <div class="w-100 h-auto pb-5 pt-3 sectionEndre">
+
+        <h1 class="text-center mb-5">Velkommen til Admin!</h1>
+
+        <div class="w-100 d-flex flex-row justify-content-around pt-4 pb-2 pl-5 pr-5">
+
+            <div class="item endreBoks">
+                <div class="p-3 iconBoks">
+                    <img src="~/Image/iconStation.png" />
+                </div>
+                <div class="pt-2 text-center textBoks">
+                    <p class="mb-2">Ønsker du å endre destinasjoner?</p>
+                    @Html.ActionLink("Endre", "endreDestinasjon", new { tom = "" }, new { @class = "btn btn-dark pl-4 pr-4 mb-1" })
+                </div>
+            </div>
+
+            <div class="item endreBoks">
+                <div class="p-3 iconBoks">
+                    <img src="~/Image/iconTrain.png" />
+                </div>
+                <div class="pt-2 text-center textBoks">
+                    <p class="mb-2">Ønsker du å endre avganger?</p>
+                    @Html.ActionLink("Endre", "endreAvganger", new { tom = "" }, new { @class = "btn btn-dark pl-4 pr-4 mb-1" })
+                </div>
+            </div>
+
+            <div class="item endreBoks">
+                <div class="p-3 iconBoks">
+                    <img src="~/Image/iconPrice.png" />
+                </div>
+                <div class="pt-2 text-center textBoks">
+                    <p class="mb-2">Ønsker du å endre priser?</p>
+                    @Html.ActionLink("Endre", "endrePris", new { tom = "" }, new { @class = "btn btn-dark pl-4 pr-4 mb-1" })
+                </div>
+            </div>
+
+            <div class="item endreBoks">
+                <div class="p-3 iconBoks">
+                    <img src="~/Image/iconLogg.png" />
+                </div>
+                <div class="pt-2 text-center textBoks">
+                    <p class="mb-2">Ønsker du å sjekke ut loggføringen?</p>
+                    @Html.ActionLink("Sjekk", "loggSide", new { tom = "" }, new { @class = "btn btn-dark pl-4 pr-4 mb-1" })
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!----------------------- SECTION LIST BESTILLINGER ------------------------------>
+    <div class="section-listBestillinger">
+        <h3 class="mt-5 mb-4 w-100 text-center" id="redigerBestillingTitle">Liste av bestillinger</h3>
+
+        <p class="text-center mb-5">
+            Her er det en oversikt over alle kundene som ha lagt til bestillinger hos <strong>Vy</strong>. <br />
+            Du som admin kan både <strong>endre</strong> og <strong>slette</strong> bestillingen dersom det trengs. Ved endring av bestilling, kan man fikse direkte på tabellen
+            og bekrefte ved å trykke på 'Endre'.
+        </p>
+
+
+        <!-------------------ALERT BOKS BESTILLING-------------------------->
+        <div class="w-25 mx-auto alertBestilling">
+            <p class="alert alert-danger text-center alertBestillingText">FEIL MELDING HER </p>
+        </div>
+        <div id="visBestillinger" class="d-flex justify-content-center"></div>
+
+    </div>
+
+
+    <!----------------------- SECTION VY QUOTE ------------------------------>
+    <div class="w-100 section-logo pt-4 pb-5 mt-5">
+        <div class="logoBoks"><img src="~/Image/logoVy.png" /></div>
+        <div class="logoBoks slagOrd text-white">Take the train more to see the world and discover yourself.</div>
+
+    </div>
+
+
+    <!----------------------- SECTION LIST ADMIN ------------------------------>
+    <div class="w-100 section-listAdmin pt-4 pb-5 mt-4">
+        <h3 class="text-center mb-3">Liste av admin</h3>
+
+        <p class="text-center mb-4">
+            Dette er en liste over alle <strong>Admin</strong> som har tilgang til å vedlikeholde bestillingssystemet. <br />
+        </p>
+
+        <!-------------------ALERT BOKS ADMIN-------------------------->
+        <div class="w-25 mx-auto alertAdmin">
+            <p class="alert alert-danger text-center alertAdminText">FEIL MELDING HER </p>
+        </div>
+        <div id="visAdmin" class="d-flex justify-content-center mt-5 pb-4"></div>
+
+    </div>
+
+
+    <!----------------------- SECTION LOGG UT ------------------------------>
+    <div class="w-100 section-loggUt mt-3 pt-2 pb-5">
+        <p class="text-center mt-2 mb-2 loggUtText">Ønsker du å logge ut?</p>
+        <div class="d-flex justify-content-center tilbakeLogin">
+            @Html.ActionLink("Logg ut", "LoggUt", new { tom = "" }, new { @class = "btn btn-dark pr-4 pl-4 btnLoggUt" })
+        </div>
+
+    </div>
+
+
+
+    <!----------------- BEKREFTELSES MODAL --------------------------->
+    <div class="modal fade" id="bekrefteModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Bekreftelse</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-hiddem="Close"></button>
+                    <span aria-hidden="true">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <p class="modalHere"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Angre</button>
+                    <!--- <button type="button" class="btn btn-dark" href="/Home/AdminSide" id="bekreftSlett">Bekreft</button> -->
+                    <a class="btn btn-dark text-white" id="btnBekreftModal">Bekreft</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+
+<!---- Style Sheet Design:  /Content/Stylesheet_admin.css  ---->
+<link href="~/Content/Stylesheet_admin.css" rel="stylesheet" type="text/css" />
+
+
+
+
+

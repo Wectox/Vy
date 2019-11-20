@@ -1,0 +1,335 @@
+﻿@model List<Gruppeoppgave_1.Model.Avganger>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<!-- JAVASCRIPT KODING ligger i /Scripts/JavaScripts.js ---->
+<script src="@Url.Content("~/Scripts/JavaScript_index.js")"></script>
+
+
+<!---------- BANNER --------->
+<header class="header section-header">
+    <div class="text-light text-center text-uppercase w-50 text-left float-right p-1 slagOrd"><strong> Vy </strong> kjører for deg</div>
+</header>
+
+
+<!----------------- DIV FOR SØKE BILLETTER ------------------------>
+
+<div class="mt-4 w-75 pb-5 mx-auto section-registrering">
+
+    <h2 class="text-center mb-4">Hvor ønsker du å reise?</h2>
+
+    <!---FORM TIL SØKING --->
+    <table class="table table-hover border-top-0 mb-1 tabell">
+        <tr>
+            <!-- RAD 1: Fra og til destinasjoner -->
+            <td>
+                <div class="form-group row mx-auto pl-5 form1">
+                    <p class="mr-3 pt-1"> <strong>Fra: </strong></p>
+
+                    <div id="dropFra">
+                        <select id="dropdownFra" class="form-control-plaintext pl-2 mr-5 destinasjon">
+                            <option disabled selected>Hvor ønsker du å reise fra?</option>
+                        </select>
+                    </div>
+
+                    <p class="mr-3 pt-1"> <strong>Til: </strong></p>
+
+                    <div id="dropTil">
+                        <select id="dropdownTil" class="form-control-plaintext pl-2 destinasjon">
+                            <option disabled selected>Hvor ønsker du å reise til?</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="feil" class="mx-auto"></div>
+            </td>
+        </tr>
+
+        <tr>
+            <!-- RAD 2: Tur/retur eller en vei -->
+            <td>
+                <div class="form-group row pl-5 mb-0 mx-auto form2">
+                    <p class="mr-2"><strong> En vei: </strong></p>
+
+                    <div class="form-check mr-5 pt-1">
+                        <input type="radio" class="form-check-input" value="enVei" name="typeReise" id="enVeiRadio" checked />
+                    </div>
+
+                    <p><strong>Tur/Retur: </strong></p>
+
+
+                    <div class="form-check ml-2 pt-1">
+                        <input type="radio" class="form-check-input" value="turRetur" name="typeReise" id="turReturRadio" />
+                    </div>
+                </div>
+        </tr>
+
+        <tr>
+            <!-- RAD 3: Dato og tid -->
+            <td>
+                <h5 class="w-100 text-center mb-4 mt-2 h5TurRetur"> Destinasjonen fra:</h5>
+
+                <div class="form-group row pl-5 pb-3 mx-auto form3">
+                    <p class="mr-3"><strong> Dato: </strong> </p>
+                    <input type="date" id="dato" class="input-group date form-control-plaintext mr-5 datoOgTid">
+
+
+                    <p class="mr-3"><strong> Tid: </strong> </p>
+
+                    <select class="form-control-plaintext datoOgTid pr-0" id="tid">
+                        <option>00:00</option>
+                        <option>01:00</option>
+                        <option>02:00</option>
+                        <option>03:00</option>
+                        <option>04:00</option>
+                        <option>05:00</option>
+                        <option>06:00</option>
+                        <option>07:00</option>
+                        <option>08:00</option>
+                        <option>09:00</option>
+                        <option selected>10:00</option>
+                        <option>11:00</option>
+                        <option>12:00</option>
+                        <option>13:00</option>
+                        <option>14:00</option>
+                        <option>15:00</option>
+                        <option>16:00</option>
+                        <option>17:00</option>
+                        <option>18:00</option>
+                        <option>19:00</option>
+                        <option>20:00</option>
+                        <option>21:00</option>
+                        <option>22:00</option>
+                        <option>23:00</option>
+                    </select>
+
+                </div>
+
+            </td>
+        </tr>
+
+
+        <tr>
+            <!-- RAD 3.2: Dato og tid -->
+            <td id="rowTurRetur">
+                <h5 class="w-100 text-center mb-4 mt-2 h5TurRetur"> Destinasjon hjemover:</h5>
+
+                <div class="form-group row pl-5 pb-3 mx-auto form3">
+                    <p class="mr-3"><strong> Dato: </strong> </p>
+                    <input type="date" id="datoRetur" class="input-group date form-control-plaintext mr-5 datoOgTid" />
+
+
+                    <p class="mr-3"><strong> Tid: </strong> </p>
+
+                    <select class="form-control-plaintext datoOgTid pr-0" id="tidRetur">
+                        <option>00:00</option>
+                        <option>01:00</option>
+                        <option>02:00</option>
+                        <option>03:00</option>
+                        <option>04:00</option>
+                        <option>05:00</option>
+                        <option>06:00</option>
+                        <option>07:00</option>
+                        <option>08:00</option>
+                        <option>09:00</option>
+                        <option selected>10:00</option>
+                        <option>11:00</option>
+                        <option>12:00</option>
+                        <option>13:00</option>
+                        <option>14:00</option>
+                        <option>15:00</option>
+                        <option>16:00</option>
+                        <option>17:00</option>
+                        <option>18:00</option>
+                        <option>19:00</option>
+                        <option>20:00</option>
+                        <option>21:00</option>
+                        <option>22:00</option>
+                        <option>23:00</option>
+                    </select>
+                </div>
+
+            </td>
+        </tr>
+
+        <tr>
+            <!-- RAD 4: Reisende billettype -->
+            <td>
+                <div class="form-group row mx-auto form4">
+                    <ul class="list-unstyled ml-5">
+                        <li class="mb-2">
+                            <span><button class="btnBillett" id="vokseDecBtn"> - </button></span>
+                            <span id="antVokse">0</span>
+                            <span><button class="btnBillett pr-2" id="vokseIncBtn"> + </button></span>
+                            <span class="ml-1"> <strong>Voksen</strong></span>
+                        </li>
+                        <li class="mb-2">
+                            <span><button class="btnBillett" id="studeDecBtn"> - </button></span>
+                            <span id="antStude">0</span>
+                            <span><button class="btnBillett pr-2" id="studeIncBtn"> + </button></span>
+                            <span class="ml-1"> <strong>Student</strong></span>
+                        </li>
+                        <li class="mb-2">
+                            <span><button class="btnBillett" id="ungdoDecBtn"> - </button></span>
+                            <span id="antUngdo">0</span>
+                            <span><button class="btnBillett pr-2" id="ungdoIncBtn"> + </button></span>
+                            <span class="ml-1"> <strong>Ungdom 13-17år</strong></span>
+                        </li>
+                    </ul>
+
+                    <ul class="list-unstyled ml-5">
+                        <li class="mb-2">
+                            <span><button class="btnBillett" id="barneDecBtn"> - </button></span>
+                            <span id="antBarne">0</span>
+                            <span><button class="btnBillett pr-2" id="barneIncBtn"> + </button></span>
+                            <span class="ml-1"> <strong>Barn 0-12år</strong></span>
+                        </li>
+                        <li class="mb-2">
+                            <span><button class="btnBillett" id="honnoDecBtn"> - </button></span>
+                            <span id="antHonno">0</span>
+                            <span><button class="btnBillett pr-2" id="honnoIncBtn"> + </button></span>
+                            <span class="ml-1"> <strong>Honnør</strong></span>
+                        </li>
+                        <li class="mb-2">
+                            <span><button class="btnBillett" id="verneDecBtn"> - </button></span>
+                            <span id="antVerne">0</span>
+                            <span><button class="btnBillett pr-2" id="verneIncBtn"> + </button></span>
+                            <span class="ml-1"> <strong>Verneplikt</strong></span>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="feilReisende mx-auto"></div>
+            </td>
+        </tr>
+    </table>
+    
+    <div class="feilMeldingText mx-auto mb-3 text-center">Vennligst fullfør søket ovenfor</div>
+    
+    <input type="submit" value="Søk billett" name="" id="sokBillett" class="btn btn-dark w-25 mx-auto" />
+</div>
+
+
+
+
+<!----------------- DIV SOM LISTER OPP ALLE AVGANGENE ------------------------>
+
+<div class=" w-100 avgangOversikt section-avgang">
+
+    <h1 class="mt-5 mb-5 w-100 text-center" id="avgangEnVeiOverskrift"></h1>
+    <div id="visInfo" class="custom-control costum-radio"></div>
+    <h1 class="mt-5 mb-5 w-100 text-center" id="avgangTurReturOverskrift"></h1>
+    <div id="returInfo"></div>
+        
+    <div class="w-25 mx-auto mt-5">
+        <input type="submit" value="Gå videre" name="" id="gaVidere" class="btn btn-dark w-100 mx-auto mb-5" />
+    </div>
+
+
+</div>
+
+
+
+
+<!----------------- DIV SOM VISER BEKREFTELSE PÅ BESTILLINGEN ------------------------>
+
+<div class="w-100 pt-4 section-bekreftelse">
+    <!----<form action="/home/Index" method="post" id="formBestilling" onsubmit="sendBestilling()"> -->
+    <h1 class="pb-5 pr-5 text-center">Ønsker du å bekrefte bestillingen din?</h1>
+
+    <div class="w-100 billetter">
+
+        <div class="billettBoks billettEnVei">
+            <h5>Enkelt billett:</h5>
+            <table>
+                <tr>
+                    <td>Billett Nr.</td>
+                    <td><input type="text" class="form-control-plaintext" name="enVei" id="getAvgangidText" readonly /></td>
+                </tr>
+                <tr>
+                    <td>Destinasjon fra:</td>
+                    <td><input type="text" class="form-control-plaintext" name="destFra" id="getDestFraText" readonly /></td>
+                </tr>
+                <tr>
+                    <td>Destinasjon til:</td>
+                    <td><input type="text" class="form-control-plaintext" name="destTil" id="getDestTilText" readonly /></td>
+                </tr>
+                <tr>
+                    <td>Tid:</td>
+                    <td><input type="text" class="form-control-plaintext" name="tid" id="getTidText" readonly /></td>
+                </tr>
+                <tr>
+                    <td>Ankomst:</td>
+                    <td><input type="text" class="form-control-plaintext" name="tid2" id="getAnkomstText" readonly /></td>
+                </tr>
+                <tr>
+                    <td>Dato:</td>
+                    <td><input type="text" class="form-control-plaintext" name="dato" id="getDatoText" readonly /></td>
+                </tr>
+
+                <tr>
+                    <td class="border-0">Pris:</td>
+                    <td class="border-0"><input type="text" class="form-control-plaintext" name="pris" id="getPrisText" readonly /></td>
+                </tr>
+
+            </table>
+        </div>
+
+        <div class="billettBoks billettRetur">
+            <h5>Retur billett:</h5>
+            <table class="bekreftelseEnVei">
+                <tr>
+                    <td>Billett Nr.</td>
+                    <td><input type="text" class="form-control-plaintext" name="turRetur" id="getAvgangidReturText" readonly /></td>
+                </tr>
+                <tr>
+                    <td>Destinasjon fra:</td>
+                    <td><input type="text" class="form-control-plaintext" name="destFra" id="getDestFraReturText" readonly /></td>
+                </tr>
+                <tr>
+                    <td>Destinasjon til:</td>
+                    <td><input type="text" class="form-control-plaintext" name="destTil" id="getDestTilReturText" readonly /></td>
+                </tr>
+                <tr>
+                    <td>Tid:</td>
+                    <td><input type="text" class="form-control-plaintext" name="tid2" id="getTidReturText" readonly /></td>
+                </tr>
+                <tr>
+                    <td>Ankomst:</td>
+                    <td><input type="text" class="form-control-plaintext" name="tid3" id="getAnkomstReturText" readonly /></td>
+                </tr>
+                <tr>
+                    <td>Dato:</td>
+                    <td><input type="text" class="form-control-plaintext" name="dato2" id="getDatoReturText" readonly /></td>
+                </tr>
+
+                <tr>
+                    <td class="border-0">Pris:</td>
+                    <td class="border-0"><input type="text" class="form-control-plaintext" name="prisRetur" id="getPrisReturText" readonly /></td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+
+    <div class="w-50 mb-5 ml-5 pl-5 pt-3 sumBoks"> <span><strong>Sum: </strong></span> <span><input type="text" class="form-control-plaintext" name="sumBillett" id="getSumText" readonly /></span></div>
+
+    <div class="w-100">
+        <span>
+            <input type="submit" name="Tilbake" value="Tilbake" class="btn btn-dark w-100" id="btnTilbake" onclick="return addData()">
+        </span>
+        <span>
+            <!----<input type="submit" name="Bestill" value="Bestill" class="btn btn-dark w-100" id="btnBekreft"> -->
+            <a href="/Home/bekreftBestilling" name="Bestill" value="Bestill" class="btn btn-dark w-100" id="btnBekreft">Bestill</a>
+        </span>
+    </div>
+
+    <!---</form>  -->
+
+</div>
+
+
+<!---- Style Sheet Design:  /Content/Stylesheet_Index.css  ---->
+<link href="~/Content/Stylesheet_Index.css" rel="stylesheet" type="text/css" />

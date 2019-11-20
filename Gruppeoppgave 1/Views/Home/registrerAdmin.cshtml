@@ -1,0 +1,112 @@
+﻿@model Gruppeoppgave_1.Model.RegistrerAdmin
+
+@{
+    ViewBag.Title = "registrerAdmin";
+}
+
+<!-- JAVASCRIPT KODING ligger i /Scripts/JavaScripts_registrer.js ---->
+<script src="@Url.Content("~/Scripts/JavaScript_registrer.js")"></script>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<body>
+    
+    <div class="mx-auto mt-4 rounded boksHoved">
+
+        <div class="form-horizontal p-3 boksRegistrer boks">
+            <h2 class="w-75 pl-4 mx-auto">Registrer admin</h2>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Fornavn, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Fornavn, new { htmlAttributes = new { @class = "form-control", @id = "fornavn", @onchange = "validerFornavn()", @onkeydown = "validerFornavn()" } })
+                    @Html.ValidationMessageFor(model => model.Fornavn, "", new { @class = "text-danger" })
+                    <div id="feilFornavn" class="text-danger"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Etternavn, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Etternavn, new { htmlAttributes = new { @class = "form-control", @id = "etternavn", @onchange = "validerEtternavn()", @onkeydown = "validerEtternavn()" } })
+                    @Html.ValidationMessageFor(model => model.Etternavn, "", new { @class = "text-danger" })
+                    <div id="feilEtternavn" class="text-danger"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Telefon, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Telefon, new { htmlAttributes = new { @class = "form-control", @id = "telefon", @onchange = "validerTelefon()", @onkeydown = "validerTelefon()" } })
+                    @Html.ValidationMessageFor(model => model.Telefon, "", new { @class = "text-danger" })
+                    <div id="feilTelefon" class="text-danger"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Epost, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Epost, new { htmlAttributes = new { @class = "form-control", @id = "epost", @onchange = "validerEpost()", @onkeydown = "validerEpost()" } })
+                    @Html.ValidationMessageFor(model => model.Epost, "", new { @class = "text-danger" })
+                    <div id="feilEpost" class="text-danger"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Passord, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Passord, new { htmlAttributes = new { @class = "form-control", @type = "password", @id = "passord", @onchange = "verifiserPassord()", @onkeydown = "verifiserPassord()" } })
+                    @Html.ValidationMessageFor(model => model.Passord, "", new { @class = "text-danger" })
+                    <div id="feilPassord" class="text-danger"></div>
+                </div>
+            </div>
+
+            <div class="">
+                <p class="m-0 pl-3 mb-2"> Gjenta passord </p>
+                <div class="col-md-10">
+                    <input type="password" class="form-control" id="passordsjekk" onchange="verifiserPassord()" onkeydown="verifiserPassord()" />
+                    <div id="feilPassordSjekk" class="text-danger"></div>
+                </div>
+            </div>
+
+            <!--- Validerer om admin er allerede registrert -->
+            @if (ViewBag.nyAdmin == false)
+            {
+                <div class="d-flex justify-content-start ml-3 mt-4">
+                    <p class="alert alert-danger text-center ">Eposten eksisterer allerede. Prøv igjen! </p>
+                </div>
+            }
+
+            <div class="form-group mt-5 btnReg">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Registrer" class="btn btn-dark btnRegistrer" id="registrerAdmin" onclick="return validerAdmin()" />
+                </div>
+            </div>
+        </div>
+
+        <div class="boks boksLogo">
+            <img class="img-fluid" src="~/Image/memberIconVy.png" />
+            <p class="text-light loggInnBoks">Har du allerede bruker? @Html.ActionLink("Logg inn", "loggInn")</p>
+        </div>
+
+
+    </div>
+
+    <img class="arrow" src="~/Image/arrowVy.png" />
+</body>
+
+}
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<!---- Style Sheet Design:  /Content/Stylesheet_Registrer.css  ---->
+<link href="~/Content/Stylesheet_Registrer.css" rel="stylesheet" type="text/css" />
+
+

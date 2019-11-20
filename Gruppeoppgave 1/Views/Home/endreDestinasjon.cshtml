@@ -1,0 +1,101 @@
+﻿@model Gruppeoppgave_1.Model.Destinasjoner
+
+@{
+    ViewBag.Title = "endreDestinasjon";
+}
+
+<!-- JAVASCRIPT KODING ligger i /Scripts/JavaScripts_endreDestinasjoner.js ---->
+<script src="@Url.Content("~/Scripts/JavaScript_endreDestinasjoner.js")"></script>
+
+<body>
+
+    <!----------------------- SECTION ENDRE DESTINASJONER------------------------------>
+    <div class="section-endre">
+
+        <div>
+            <h2 class="pt-3 mb-4 text-center endreh2">Admin - håndtere destinasjoner</h2>
+        </div>
+
+        <p class="text-center m-0 mt-4">Her er det mulig å legge inn flere destinasjoner og soner:  </p>
+
+        <div class="form-horizontal mx-auto innDest">
+            <div class="form-group row">
+                <h5 class="mr-2">Sted:</h5>
+                <input type='text' id="nySted" onchange="validerNySted(); validerSettInnDest();" onkeydown="validerNySted(); validerSettInnDest();" size='13' />
+            </div>
+
+            <div class="form-group row">
+                <h5 class="mr-1">Sone:</h5>
+                <input type='text' id="nySone" onchange="validerNySone(); validerSettInnDest();" onkeydown="validerNySone(); validerSettInnDest();" maxlength='2' />
+            </div>
+
+            <div class="form-group">
+                <button class='btn btn-dark' id="leggTilKnapp" onclick="nyAvganger()">Legg til</button>
+            </div>
+        </div>
+
+        <!-------------------ALERT BOKS SETT INN DESTINASJON-------------------------->
+        <div class="w-25 mx-auto mb-5 alertSettInnDestinasjon">
+            <p class="alert alert-danger text-center alertSettInnDestinasjonText">FEIL MELDING HER </p>
+        </div>
+
+
+        <div class=" w-100 destinasjonOversikt section-destinasjon">
+            <hr class="" />
+
+            <h4 class="mt-5 mb-5 text-center">Nåværende destinasjoner</h4>
+
+            <p class="text-center p-0 m-0">
+                Ønsker du å <strong>endre</strong> og <strong>slette</strong> destinasjonene? <br />
+                Ved endring av bestilling, kan man fikse direkte på tabellen og bekrefte ved å trykke på 'Endre'.
+            </p>
+
+            <!-------------------ALERT BOKS LIST DESTINASJON------------------------->
+            <div class="w-25 mx-auto mt-5 mb-0 alertListDestinasjon">
+                <p class="alert alert-danger text-center alertListDestinasjonText">FEIL MELDING HER </p>
+            </div>
+
+            <div id="visDestinasjoner" class=""> </div>
+
+        </div>
+
+
+        <!----------------------- BEKREFTELSE MODAL ------------------------------>
+
+        <div class="modal fade" id="bekrefteModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Bekreftelse</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-hiddem="CLose"></button>
+                        <span aria-hidden="true">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <p class="modalHere"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Angre</button>
+                        <!--- <button type="button" class="btn btn-dark" href="/Home/AdminSide" id="bekreftSlett">Bekreft</button> -->
+                        <a class="btn btn-dark text-white" id="btnBekreftModal">Bekreft</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="endreBilde">
+            <img src="~/Image/endreDestinasjonVy.png" height="auto" width="250px" />
+        </div>
+    </div>
+
+    <div class="w-100 section-tilbake pt-5 pb-5">
+        <div class="d-flex justify-content-center ">
+            @Html.ActionLink("Gå tilbake", "AdminSide", new { tom = "" }, new { @class = "btn btn-dark pr-4 pl-4 btnTilbake" })
+        </div>
+
+    </div>
+
+
+</body>
+
+<!---- Style Sheet Design:  /Content/Stylesheet_admin.css  ---->
+<link href="~/Content/Stylesheet_endre.css" rel="stylesheet" type="text/css" />

@@ -1,0 +1,60 @@
+﻿body {
+}
+
+
+.section-loggInn{
+    background-image: url(/Image/bgloggInnVy.jpg);
+    background-size: cover;
+    height: 93vh;
+}
+
+.section-loggInn h1 {
+    padding-top: 90px;
+    padding-left: 70px; 
+    color: #292828;
+}
+
+
+.section-loggInn h1::after{
+    border-bottom: 1px solid #a1a1a1;
+    width: 120px;
+    display: block;
+    margin-left: 120px;
+    padding-bottom: 25px;
+    content:"";
+}
+
+.registrer{
+    padding-left: 140px;
+}
+
+.form-group{
+    padding-left: 100px;
+}
+
+.btnloggInn{
+    width: 120px;
+    margin-left: 120px;
+}
+
+
+.btnTilbake{
+    position: absolute;
+    bottom: 20px;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

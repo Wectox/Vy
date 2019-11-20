@@ -1,0 +1,78 @@
+﻿
+<!-- JAVASCRIPT KODING ligger i /Scripts/JavaScripts_logg.js ---->
+<script src="@Url.Content("~/Scripts/JavaScript_logg.js")"></script>
+
+<body>
+
+    <!----------------------- SECTION FOR LOGGING------------------------------>
+    <div class="section-endre">
+
+        <h2 class="text-center pt-4">Alle loggføringer:</h2>
+
+        <p class="text-center mt-5">
+            Her er det oversikt over alle loggføringene som har blitt gjort i løpet av Vy-bestillinger. Det listes opp etter <br />
+            brukerens bestillinger og alle vedlikeholdene som er blitt gjort i Admin.
+            Det er mulig å <strong>slette</strong> og se fullt beskrivelse <br /> om loggen ved å trykke på <strong>'Detaljer'</strong>.
+        </p>
+
+        <div id="visLogg" class=""> </div>
+
+        <div class="endreBilde">
+            <img src="~/Image/sjekkLogg.png" />
+        </div>
+
+    </div>
+
+
+    <!----------------------- FOOTER TILBAKE TIL ADMIN ------------------------>
+    <div class="w-100 section-tilbake pt-5 pb-5">
+        <div class="d-flex justify-content-center ">
+            @Html.ActionLink("Gå tilbake", "AdminSide", new { tom = "" }, new { @class = "btn btn-dark pr-4 pl-4 btnTilbake" })
+        </div>
+
+    </div>
+
+
+    <!----------------------- BEKREFTELSE MODAL ------------------------------>
+    <div class="modal fade" id="bekrefteModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Bekreftelse</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-hiddem="CLose"></button>
+                    <span aria-hidden="true">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <p class="modalHere"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Angre</button>
+                    <a class="btn btn-dark text-white" id="btnBekreftModal">Bekreft</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="detaljeModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Beskrivelse</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-hiddem="Close"></button>
+                    <span aria-hidden="true">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <p class="modalHere"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Lukk</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<!---- Style Sheet Design:  /Content/Stylesheet_endre.css  ---->
+<link href="~/Content/Stylesheet_endre.css" rel="stylesheet" type="text/css" />
